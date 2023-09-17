@@ -12,7 +12,6 @@ import (
 	"path"
 	"strings"
 
-	wireguardapi "github.com/jamescun/wg-api"
 	"github.com/jamescun/wg-api/server"
 	"github.com/jamescun/wg-api/server/jsonrpc"
 
@@ -51,6 +50,8 @@ Warnings:
   failing that, be behind an authenticating proxy or have mTLS enabled.
   Additionally authentication tokens should be configured.
 `
+
+var Version = "1.0.0"
 
 var (
 	// helpers
@@ -92,7 +93,7 @@ func main() {
 		}
 
 	case *showVersion:
-		fmt.Println("WG-API Version:", wireguardapi.Version)
+		fmt.Println("WG-API Version:", Version)
 
 	default:
 		client, err := wgctrl.New()
@@ -178,7 +179,6 @@ func main() {
 			}
 		}
 	}
-
 }
 
 func exitError(format string, args ...interface{}) {

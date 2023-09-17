@@ -22,10 +22,10 @@ Binaries for Linux are available [here](https://github.com/jamescun/wg-api/relea
 
 ### Build Yourself
 
-WG-API requires at least Go 1.13.
+WG-API requires at least Go 1.17.
 
 ```sh
-go install github.com/jamescun/wg-api/cmd
+go install github.com/jamescun/wg-api
 ```
 
 This should install the server binary `wg-api` in your $GOPATH/bin.
@@ -35,9 +35,10 @@ This should install the server binary `wg-api` in your $GOPATH/bin.
 WG-API can also be run inside a Docker container, however the container will need to existing within the same network namespace as the host and have network administrator capability (CAP_NET_ADMIN) to be able to control the WireGuard interface.
 
 ```sh
-docker run --name=wg-api -d -p 8080:8080 --network host --cap-add NET_ADMIN james/wg-api:latest wg-api --device=<my device>
+docker run --name=wg-api -d -p 8080:8080 --network host --cap-add NET_ADMIN james/wg-api:latest --device=<my device>
 ```
 
+The Docker container now supports Linux on AMD64, ARM64 and ARMv7 architectures.
 
 ## Configuring WG-API
 
